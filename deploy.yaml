@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  go-deploy
+  labels:
+    app:  goapp
+spec:
+  selector:
+    matchLabels:
+      app: goapp
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  goapp
+    spec:
+      containers:
+      - name:  goapp
+        image:  maorgoldberg/yad2_master
+        ports:
+        - containerPort:  8000
+          name:  goapp
+      restartPolicy: Always
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-svc
+spec:
+  selector:
+    app: goapp
+  type: NodePort
+  ports:
+  - name: go-svc
+    port: 8000
+    targetPort: 8000
+    protocol: TCP
+    nodePort: 30080
