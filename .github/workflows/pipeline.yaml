@@ -13,6 +13,5 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
-        repository: ${{ secrets.DOCKER_USER }}
-        tags: yad2${GITHUB_REF}
+        tags: ${{ secrets.DOCKER_USER }}/yad2_devops
         tag_with_sha: true
