@@ -14,4 +14,5 @@ jobs:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
         repository: ${{ secrets.DOCKER_USER }}
+        tag_with_ref: true
         tag_with_sha: true
