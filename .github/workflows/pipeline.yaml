@@ -14,5 +14,5 @@ jobs:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
         repository: ${{ secrets.DOCKER_USER }}
-        tag_with_ref: true
+        tags: yad2${GITHUB_REF}
         tag_with_sha: true
